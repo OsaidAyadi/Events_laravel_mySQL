@@ -18,10 +18,11 @@ class CreateEventsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('location');
-            $table->timestamp('date');
+            $table->date('date');
+            $table->time('time');
             $table->unsignedInteger('price');
             $table->boolean('active')->default(false);
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -83,6 +84,40 @@ class UserController extends Controller
 
 
         return view('profile');
+
+
+    }
+
+
+    public function update_point(Request $request, $id)
+    {
+//            dd($request->input('name'));
+//           dd(Event::findOrFail($id));
+
+//        User::findOrFail($id)
+//            ->update(['name' => $request->input('name')]);
+//        User::findOrFail($id)
+//            ->update(['email' => $request->input('email')]);
+//        User::findOrFail($id)
+//            ->update(['phone' => $request->input('phone')]);
+
+        User::where("id",Auth::user()->id)
+            ->increment('points', 5);
+
+
+        $event = Event::findOrFail($id);
+        User::findOrFail(Auth::user()->id)
+            ->update(['remember_token' => $event->photo]);
+
+
+
+
+
+
+
+
+
+        return view('profile',compact('event'));
 
 
     }

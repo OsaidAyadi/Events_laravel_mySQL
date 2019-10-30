@@ -33,8 +33,13 @@ Route::get('/profile', function () {
     return view('profile');
 });
 Route::resource ('/user','UserController');
+Route::resource ('/comment','CommentController');
 
 Route::get('/payment', function () {
     return view('Payment');
 });
+
+Route::get('/{event_id}/info', 'EventController@info')->name('info');
+Route::put('/{event_id}/update_point', 'UserController@update_point')->name('update_point');
+
 

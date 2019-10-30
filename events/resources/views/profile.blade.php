@@ -40,6 +40,8 @@
     }
 
 </style>
+
+
     <script src="{{ asset('js/profile.js') }}"></script>
 
     <div class="container">
@@ -65,9 +67,10 @@
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
                                 </div>
-                                <a href="/edit_profile" class="btn btn-info">Edit Profile</a>
 
                             </div>
+                            <a  style="float: right" href="/edit_profile" class="btn btn-warning">Edit Profile</a>
+
 
                         </div>
 
@@ -136,7 +139,14 @@
 
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
-                                        Facebook, Google, Twitter Account that are connected to this account
+                                        @if (Auth::user()->remember_token == null)
+                                            <p>You don't have any events yet .</p>
+
+                                            @else
+                                            <p>The events you booked :</p>
+                                            <img src="{{asset('storage').'/'.Auth::user()->remember_token}}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
