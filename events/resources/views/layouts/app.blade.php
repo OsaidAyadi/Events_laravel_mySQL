@@ -75,11 +75,18 @@
 
                             <div class="dropdown-menu dropdown-menu-right"
                                  aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="/profile">
+                                    {{ Auth::user()->name }}
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+
+
 
                                 <form id="logout-form" action="{{ route('logout') }}"
                                       method="POST" style="display: none;">
@@ -97,6 +104,8 @@
 
 
     @yield('content')
+
+
 
 
     <div class="footer_extra">

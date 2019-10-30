@@ -12,11 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('Home.category');
+    return view('welcome');
 });
 
 Route::get('/contact-us', function () {
     return view('contact-us');
+});
+
+Route::get('/edit_profile', function () {
+    return view('Edit.edit_name');
 });
 
 
@@ -25,5 +29,12 @@ Auth::routes();
 Route::get('/home', 'CategoryController@index')->name('home');
 Route::resource ('/category','CategoryController');
 Route::resource ('/event','EventController');
+Route::get('/profile', function () {
+    return view('profile');
+});
+Route::resource ('/user','UserController');
 
+Route::get('/payment', function () {
+    return view('Payment');
+});
 
